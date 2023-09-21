@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DishesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->get('/dish/edit', [DishesController::class, 'apishow']);
+
+Route::middleware('auth:sanctum')->get('/dish/all',[DishesController::class,'apiindex']
+);
+Route::post('/login',[LoginController::class,'apilogin']);

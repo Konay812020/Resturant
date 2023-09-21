@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes([
+'register'=>false,
+'verify'=>false,
+'reset'=>false,
+'confirm'=>false,
+
+]);
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\OrderController::class, 'index'])->name('home');
+Route::get('/dish', [App\Http\Controllers\DishesController::class, 'index'])->name('dish.all');
